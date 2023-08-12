@@ -15,17 +15,18 @@ const gameBoard = (() => {
         }
     }
 
+
     return {getSquare, setSquare, clear}
 })();
 
 const Player = (sign) => {
-    _sign = sign
-    
+    let _sign = sign
+
     const getSign = () => {
         return _sign
     }
 
-    const setSign = (sing) => {
+    const setSign = (sign) => {
         _sign = sign;
 
     }
@@ -44,22 +45,16 @@ const gameMaster = (() => {
 
 })();
 
-const player1 = Player(`player1`, 0);
-const player2 = Player(`player2`, 0);
+const player1 = Player(`X`)
 
-/*
-    arr = [[(0),(1),(2)],
-           [(3),(4),(5)],
-           [(6),(7),(8)]]
+const render = (() => {
+    const gameField = Array.from(document.querySelectorAll(`button.square`))
 
-     win conditions:
-        arr[0] === arr[3] === arr[6]
-        arr[1] === arr[4] === arr[7]
-        arr[2] === arr[5] === arr[8]
-        arr[0] === arr[1] === arr[2]
-        arr[3] === arr[4] === arr[5]
-        arr[6] === arr[7] === arr[8]
-        arr[0] === arr[4] === arr[8]
-        arr[2] === arr[4] === arr[6]
-*/
-
+    const initialize = (() => {
+        gameField.forEach((e) => {
+            e.addEventListener(`click`, () => {
+                gameBoard.setSquare(e, player1)
+            })
+        })
+    })();
+})();
