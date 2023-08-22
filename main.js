@@ -1,60 +1,77 @@
 const gameBoard = (() => {
+
     const _board = new Array(9)
 
-    const getSquare = (space) => {
-        return _board[space]
+    const getBoard = () => _board;
+
+    const setBoard = () => {
+
+        player = gameController.getTurn();
+        move = gameController.getMove();
+
+        if (_board[move] === undefined) {
+            _board[move] = player.token;
+        } else {
+            console.log(`invalid space`)
+            return
+        }
     };
 
-    const setSquare = (space, player) => {
-        _board[space] = player.getSign();
-    }
+    const printBoard = () => {
+        console.log(_board)
+    };
 
-    const clear = () => {
-        for (let i = 0; i < _board.length; i++) {
-            _board[i] = undefined;
-        }
-    }
+    return {getBoard, setBoard, printBoard}
 
-
-    return {getSquare, setSquare, clear}
 })();
 
-const Player = (sign) => {
-    let _sign = sign
-
-    const getSign = () => {
-        return _sign
-    }
-
-    const setSign = (sign) => {
-        _sign = sign;
-
-    }
-
+const Player = () => {
 
 };
 
-const gameMaster = (() => {
-    const roundWin = () => {
-        /**/
+const gameController = (
+    (playerOneName = `Player One`, playerTwoName = `Player Two`) => {
+
+    const _players = [
+    {
+        name: playerOneName,
+        token: `X`
+    },
+    {
+        name: playerTwoName,
+        token: `O`
+    }];
+
+    let _move = 0;
+
+    let _currentTurn = _players[0];
+
+    const getTurn = () => _currentTurn;
+
+    const setTurn = () => {
+        _currentTurn = _currentTurn === _players[0] ? _players[1] : _players[0]
     };
 
-    const gameWin = () => {
-        /**/
+    const getMove = () => _move;
+
+    const setMove = () => {
+        let _input = prompt(`Pick a number from 1-9`)
+        _move = _input
     };
+
+
+    return {getTurn, setTurn, getMove, setMove}
 
 })();
 
-const player1 = Player(`X`)
-
 const render = (() => {
-    const gameField = Array.from(document.querySelectorAll(`button.square`))
+    
+    do {
+        gameController.setMove();
+        gameBoard.setBoard();
+        gameBoard.printBoard();
+        gameController.setTurn();
+    } while (gameBoard.getBoard.length !== 9);
+    
 
-    const initialize = (() => {
-        gameField.forEach((e) => {
-            e.addEventListener(`click`, () => {
-                gameBoard.setSquare(e, player1)
-            })
-        })
-    })();
 })();
