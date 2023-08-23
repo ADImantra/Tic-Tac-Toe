@@ -1,6 +1,6 @@
 const gameBoard = (() => {
 
-    const _board = new Array(9)
+    let _board = new Array(9)
 
     const setBoard = () => {
 
@@ -17,11 +17,34 @@ const gameBoard = (() => {
 
     const getBoard = () => _board;
 
+    const getEmptySpace = () => {
+        const spaces = _board.filter((space) => {
+            typeof space === undefined;
+        });
+
+        return spaces;
+    };
+
+    const getBoardSpace = (index) => _board[index];
+
     const printBoard = () => {
         console.log(_board)
     };
 
-    return {getBoard, setBoard, printBoard}
+    const clear = () => {
+        for (let i = 0; i <_board.length; i++) {
+            _board[i] = undefined;
+        }
+    }
+
+    return {
+        getBoard,
+        getEmptySpace, 
+        getBoardSpace, 
+        setBoard, 
+        printBoard, 
+        clear
+    }
 
 })();
 
@@ -61,55 +84,19 @@ const gameController = (
         _move = _input
     };
 
-    const getWinner = () => {
-        setWinner();
-        return _winner;
-    };
-
-    const setWinner = () => {
-
-        const board = gameBoard.getBoard();
-        console.log(typeof board[0])
-
-        if (board[0] === board[1] && board[1]  === board[2]) 
-            {
-                console.log(`registered winner`)
-                Object.assign(_winner, _currentTurn)
-            }
-
-    };
-
-
-    return {getTurn, setTurn, getMove, setMove, getWinner, setWinner}
-
-})();
-
-const render = (() => {
-    const board = gameBoard.getBoard();
-    let winner = gameController.getWinner();
-    let _count = 0;
-
-    while (_count < 9 && winner.length === 0) {
-        gameController.setMove();
-        gameBoard.setBoard();
-        gameBoard.printBoard();
-
-        if (Object.keys(winner.length === 0)) {
-            gameController.setTurn();
-            console.log(`repeat`)
-        } else {
-            console.log(`${gameController.getTurn().name} is the winner`);
-            break;
-        }
-
-        ++_count
-    }
     
 
+
+    return {getTurn, setTurn, getMove, setMove}
+
 })();
 
+
+
 /*
-    [0][1][2]
-    [3][4][5]
-    [6][7][8]
+    [[0,1,2],
+     [3,4,5],
+     [6,7,8]]
+
+    
 */
