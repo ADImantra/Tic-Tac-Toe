@@ -32,17 +32,17 @@ const gameBoard = (() => {
     };
 
     const clear = () => {
-        for (let i = 0; i <_board.length; i++) {
+        for (let i = 0; i < _board.length; i++) {
             _board[i] = undefined;
         }
     }
 
     return {
         getBoard,
-        getEmptySpace, 
-        getBoardSpace, 
-        setBoard, 
-        printBoard, 
+        getEmptySpace,
+        getBoardSpace,
+        setBoard,
+        printBoard,
         clear
     }
 
@@ -50,46 +50,72 @@ const gameBoard = (() => {
 
 const Player = () => {
 
+    let _name = ``;
+     
+    const getName = () => _name
+
+    const setName = (nameInput) => {
+        _name = nameInput
+    }
+
+    return {
+        getName,
+        setName
+    }
+
 };
 
-const gameController = (
-    (playerOneName = `Player One`, playerTwoName = `Player Two`) => {
+const gameController = (() => {
 
-    const _players = [
-    {
-        name: playerOneName,
-        token: `X`
-    },
-    {
-        name: playerTwoName,
-        token: `O`
-    }];
+        let _move = 0;
+        let _currentTurn = 0;
+        let _mode = `Versus`;
+        let _players = [];
 
-    let _move = 0;
+        const setPlayers = (playerName, playerToken) => {
+            let player = {playerName: `${playerName}`, playerToken: `${playerToken}`};
+            _players.push(player);
+        }
 
-    let _currentTurn = _players[0];
+        const setMode = () => {
+            _mode = _mode === `Versus` ? `AI` : `Versus`;
+        }
 
-    let _winner = {};
+        const setTurn = () => {
+            if (_players.length === 2) {
+                _currentTurn = _currentTurn === _players[0] ? _players[1] : _players[0]
+            } else {
+                console.log(`To Few Players`)
+            }
+            
+        };
 
-    const getTurn = () => _currentTurn;
+        const setMove = () => {
+            let _input = prompt(`Pick a number from 1-9`)
+            _move = _input
+        };
 
-    const setTurn = () => {
-        _currentTurn = _currentTurn === _players[0] ? _players[1] : _players[0]
-    };
+        const getMode = () => _mode;
 
-    const getMove = () => _move;
+        const getTurn = () => _currentTurn;
 
-    const setMove = () => {
-        let _input = prompt(`Pick a number from 1-9`)
-        _move = _input
-    };
+        const getPlayers = () => _players;
 
-    
+        const getMove = () => _move;
 
+        
+        return {
+            setPlayers, 
+            getPlayers, 
+            setMode, 
+            getMode, 
+            getTurn, 
+            setTurn, 
+            getMove, 
+            setMove 
+        }
 
-    return {getTurn, setTurn, getMove, setMove}
-
-})();
+    })();
 
 
 
