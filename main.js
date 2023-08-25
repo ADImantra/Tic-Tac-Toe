@@ -9,9 +9,10 @@ const gameBoard = (() => {
 
         if (_board[move] === undefined) {
             _board[move] = player.token;
+            return true;
         } else {
             console.log(`invalid space`)
-            return
+            return false
         }
     };
 
