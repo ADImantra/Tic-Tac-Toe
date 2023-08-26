@@ -1,0 +1,25 @@
+* {
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.gameBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gameBox ul.gameSpaces {
+    display: grid;
+    grid-template-columns: repeat(3, 1rem);
+    grid-template-rows: repeat(3, 1rem);
+    gap: 6rem;
+
+}
+
+li.space {
+    text-align: center;
+    margin: 10px;
+    border: 2px solid blue;
+    padding: 3.2rem;
+}
