@@ -43,7 +43,7 @@ export default class Board {
          }
 
          if (![`X`,`O`].includes(token)) {
-            throw new Error(`Invalid token value. must be "X" or "O"` )
+            throw new Error(`Invalid token value. must be "X" or "O"`)
          }
 
          if (this.state[move]) {

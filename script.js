@@ -37,17 +37,12 @@ const gameController = () => {
 const displayController = (() => {
     const board = new Board([``, ``, ``, ``, ``, ``, ``, ``, ``, ]);
     const _gameBox = document.querySelectorAll(`.space`)
-    
+
     _gameBox.forEach((element) => {
-        if (element ===_gameBox[0] || 
-            element === _gameBox[2] || 
-            element === _gameBox[6] ||
-            element === _gameBox[8]) {
-                element.
-            }
-    })
+        element.addEventListener(`mousedown` , console.log(`click`))
+        })
 
-
-    board._printFormattedBoard();
+    board._printFormattedBoard()
 })();
+
 

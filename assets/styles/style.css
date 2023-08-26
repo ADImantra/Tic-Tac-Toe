@@ -13,13 +13,60 @@
     display: grid;
     grid-template-columns: repeat(3, 1rem);
     grid-template-rows: repeat(3, 1rem);
-    gap: 6rem;
+    gap: 9rem;
 
 }
 
-li.space {
+li {
     text-align: center;
     margin: 10px;
+    padding: 4.6rem;
+}
+
+#spaceCL {
     border: 2px solid blue;
-    padding: 3.2rem;
+}
+
+#spaceTL {
+    border-right: 2px solid blue;
+    border-bottom: 2px solid blue;
+}
+
+#spaceTM {
+    border-right: 2px solid blue;
+    border-bottom: 2px solid blue;
+    border-left: 2px solid blue;
+}
+
+#spaceTR {
+    border-bottom: 2px solid blue;
+    border-left: 2px solid blue;
+}
+
+#spaceML {
+    border-right: 2px solid blue;
+    border-bottom: 2px solid blue;
+    border-top: 2px solid blue;
+}
+
+#spaceMR {
+    border-bottom: 2px solid blue;
+    border-top: 2px solid blue;
+    border-left: 2px solid blue;
+}
+
+#spaceBL {
+    border-top: 2px solid blue;
+    border-right: 2px solid blue;
+}
+
+#spaceBM {
+    border-top: 2px solid blue;
+    border-right: 2px solid blue;
+    border-left: 2px solid blue;
+}
+
+#spaceBR {
+    border-top: 2px solid blue;
+    border-left: 2px solid blue;
 }
