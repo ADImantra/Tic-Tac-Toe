@@ -3,6 +3,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: rgb(102, 108, 114);
+}
+
 .gameBox {
     display: flex;
     align-items: center;
@@ -21,52 +25,54 @@ li {
     text-align: center;
     margin: 10px;
     padding: 4.6rem;
+    color: antiquewhite;
 }
 
+
 #spaceCL {
-    border: 2px solid blue;
+    border: 2px solid white;
 }
 
 #spaceTL {
-    border-right: 2px solid blue;
-    border-bottom: 2px solid blue;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
 }
 
 #spaceTM {
-    border-right: 2px solid blue;
-    border-bottom: 2px solid blue;
-    border-left: 2px solid blue;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    border-left: 2px solid white;
 }
 
 #spaceTR {
-    border-bottom: 2px solid blue;
-    border-left: 2px solid blue;
+    border-bottom: 2px solid white;
+    border-left: 2px solid white;
 }
 
 #spaceML {
-    border-right: 2px solid blue;
-    border-bottom: 2px solid blue;
-    border-top: 2px solid blue;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    border-top: 2px solid white;
 }
 
 #spaceMR {
-    border-bottom: 2px solid blue;
-    border-top: 2px solid blue;
-    border-left: 2px solid blue;
+    border-bottom: 2px solid white;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
 }
 
 #spaceBL {
-    border-top: 2px solid blue;
-    border-right: 2px solid blue;
+    border-top: 2px solid white;
+    border-right: 2px solid white;
 }
 
 #spaceBM {
-    border-top: 2px solid blue;
-    border-right: 2px solid blue;
-    border-left: 2px solid blue;
+    border-top: 2px solid white;
+    border-right: 2px solid white;
+    border-left: 2px solid white;
 }
 
 #spaceBR {
-    border-top: 2px solid blue;
-    border-left: 2px solid blue;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
 }

@@ -2,13 +2,11 @@ export default class Player {
     constructor(score = 0, 
                 token = ``, 
                 name = `player`, 
-                activePlayer = false,
                 type = ``) {
                     
         this.score = score;
         this.token = token;
         this.name = name;
-        this.activePlayer = activePlayer;
         this.type = type;
     };
 
@@ -27,28 +25,8 @@ export default class Player {
     setScore(scoreInput) {
         this.score++
     }
-    
-    setActivePlayer () {
-        this.activePLayer = activePLayer === true ? false : true;
-    }
 
     setType() {
         this.type = type === `AI` ? `Player` : `AI`;
     }
-
-    getName() {
-        return this.name;
-    };
-
-    getToken() {
-        return this.token;
-    };
-
-    getScore() {
-        return this.score;
-    };
-
-    getActivePlayer() {
-        return this.activePlayer;
-    };
 }

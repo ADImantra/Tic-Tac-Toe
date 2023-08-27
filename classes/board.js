@@ -55,41 +55,52 @@ export default class Board {
     };
 
     _checkRows() {
-        for (let i = 0; i < 3; i++) {
-            let row = [];
-            for (let j = i + 3; j < i * 3 + 3; j++) {
-                row.push(this.state[j])
-            }
+        let row1 = [this.state[0], this.state[1], this.state[2]];
+        let row2 = [this.state[3], this.state[4], this.state[5]];
+        let row3 = [this.state[6], this.state[7], this.state[8]];
 
-            if (row.every(cell => cell === `X`) || row.every(cell => cell === `O`)) {
-                return true;
-            }
-        }
-        return false;
+        if (row1.every(space => space === `X`) || row1.every(space => space === `O`)) {
+            return true;
+        };
+
+        if (row2.every(space => space === `X`) || row2.every(space => space === `O`)) {
+            return true;
+        };
+
+        if (row3.every(space => space === `X`) || row3.every(space => space === `O`)) {
+            return true;
+        };
+
+        return false
     };
 
     _checkColumns() {
-        for (let i = 0; i < 3; i++) {
-            column = [];
-            for (let j = 0; j < 3; j++) {
-                column.push(this.state[i + j*3])
-            }
+        let col1 = [this.state[0], this.state[3], this.state[6]];
+        let col2 = [this.state[1], this.state[4], this.state[7]];
+        let col3 = [this.state[2], this.state[5], this.state[8]];
 
-            if (column.every(cell => cell === `X`) || column.every(cell => cell === `O`)) {
-                return true;
-            }
-        }
+        if (col1.every(space => space === `X`) || col1.every(space => space === `O`)) {
+            return true;
+        };
 
-        return false;
+        if (col2.every(space => space === `X`) || col2.every(space => space === `O`)) {
+            return true;
+        };
+
+        if (col3.every(space => space === `X`) || col3.every(space => space === `O`)) {
+            return true;
+        };
+
+        return false
     };
 
     _checkDiagonals() {
-        const diagonal1 = [this.state[0], this,state[4], this.state[8]]
-        const diagonal2 = [this.state[2], this,state[4], this.state[6]]
+        const diagonal1 = [this.state[0], this.state[4], this.state[8]]
+        const diagonal2 = [this.state[2], this.state[4], this.state[6]]
 
-        if (diagonal1.every(cell => cell === `X`) || diagonal1.every(cel => cell === `O`)) {
+        if (diagonal1.every(cell => cell === `X`) || diagonal1.every(cell => cell === `O`)) {
             return true;
-        } else if (diagonal2.every(cell => cell === `X`) || diagonal2.every(cel => cell === `O`)) {
+        } else if (diagonal2.every(cell => cell === `X`) || diagonal2.every(cell => cell === `O`)) {
             return true;
         } else {
             return false;
@@ -102,6 +113,14 @@ export default class Board {
         }
 
         if (this._checkRows()) {
+            return true
+        }
+
+        if (this._checkColumns()) {
+            return true
+        }
+
+        if (this._checkDiagonals()) {
             return true
         }
 
