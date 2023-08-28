@@ -19,13 +19,18 @@ export default class Board {
     };
 
     _getEmptyCells() {
-        return this.state.filter(space => {
-            typeof space === ``;
+        const moves = [];
+
+        this.state.forEach((cell, index) => {
+            if (!cell) {
+                moves.push(index)
+            }
         })
+
+        return moves;
     };
 
     _fullBoard() {
-        console.log(this.state)
         return this.state.every((cell) => {
             return cell;
         })
@@ -107,27 +112,31 @@ export default class Board {
         }
     };
 
-    _getTerminalState()  {
+    _getTerminalState(token)  {
         if (this._emptyBoard()) {
-            return false
+            return {terminal: false, winner: `None`, board: this.state}
         }
 
         if (this._checkRows()) {
-            return true
+            return {terminal: true, winner: token, board: this.state}
         }
 
         if (this._checkColumns()) {
-            return true
+            return {terminal: true, winner: token, board: this.state}
         }
 
         if (this._checkDiagonals()) {
-            return true
+            return {terminal: true, winner: token, board: this.state}
         }
 
-        return false
+        if (this._fullBoard()) {
+            return {terminal: true, winner: `Draw`, board: this.state}
+        }
+
+        return {terminal: false, winner: `None`, board: this.state}
     };
 
-    _isDraw() {
-        return this._fullBoard() && !this._getTerminalState();
-    };
+    _clear() {
+        this.state = [``,``,``,``,``,``,``,``,``]
+    }
 };
