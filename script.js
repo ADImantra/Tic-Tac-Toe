@@ -19,6 +19,10 @@ while (board._getTerminalState().terminal === false) {
 
 console.log(board._printFormattedBoard())
 
+/* 
+    All the Actual code is in the Board and Player classes
+*/
+
 
 
 
