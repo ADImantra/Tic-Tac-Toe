@@ -137,5 +137,6 @@ export default class Board {
 
     _clear() {
         this.state = [``,``,``,``,``,``,``,``,``]
+        console.log(`cleared`)
     }
 };

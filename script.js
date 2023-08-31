@@ -2,25 +2,48 @@ import Board from "./classes/board.js";
 import Player from "./classes/player.js";
 
 const board = new Board([``, ``, ``, ``, ``, ``, ``, ``, ``])
-board._printFormattedBoard()
-const p1 = new Player()
-const p2 = new Player()
-p1.setToken(`X`)
-p2.setToken(`O`)
-p1.setType(`Player`)
-p2.setType(`AI`)
+const player1 = new Player();
+const player2 = new Player();
+
+const init = () => {
+    player1.setToken(`X`)
+    player2.setToken(`O`)
+    player1.setType(`Player`)
+    player2.setType(`AI`)
+};
+
+const difficultyProbability = (percentage) => {
+    
+    let _percentage = percentage
+    let _difficultyPercent = Math.floor(Math.random() * 100)
+
+    return _difficultyPercent <= percentage
+};
+
+const gameOn = () => {
+    
+}
 
 const domManager = (() => {
+    const _container = document.querySelector(`.container`);
+    const _playSpace = document.querySelector(`.playSpace`);
+    const _spaces = document.querySelectorAll(`.block`);
 
+    const _resetBoard = () => {
+        const _reset = document.querySelector(`.reset`);
+        _reset.addEventListener(`click`, () => {
+            board._clear();
+        })
+    }
+
+    return {
+        _resetBoard
+    }
 })();
 
-const render = (() => {
+domManager._resetBoard()
 
-})();
 
-/* 
-    All the Actual code is in the Board and Player classes
-*/
 
 
 
