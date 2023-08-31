@@ -20,12 +20,11 @@ export default class Board {
 
     _getEmptyCells() {
         const moves = [];
-
         this.state.forEach((cell, index) => {
             if (!cell) {
                 moves.push(index)
             }
-        })
+        });
 
         return moves;
     };

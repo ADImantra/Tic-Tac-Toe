@@ -7,17 +7,16 @@ const p1 = new Player()
 const p2 = new Player()
 p1.setToken(`X`)
 p2.setToken(`O`)
-p1.setType(`AI`)
+p1.setType(`Player`)
 p2.setType(`AI`)
 
-while (board._getTerminalState().terminal === false) {
-    console.log(parseInt(p1.getBestMove(board)))
-    board._placeToken(p1.token, parseInt(p1.getBestMove(board)))
-    console.log(parseInt(p2.getBestMove(board)))
-    board._placeToken(p2.token, parseInt(p2.getBestMove(board)))
-}
+const domManager = (() => {
 
-console.log(board._printFormattedBoard())
+})();
+
+const render = (() => {
+
+})();
 
 /* 
     All the Actual code is in the Board and Player classes
