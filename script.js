@@ -43,19 +43,27 @@ const domManager = (() => {
 
     const _triggerStep = () => {
         _spaces.forEach((space, index) => space.addEventListener(`click`, () => {
+
             board._placeToken(player1.token, parseInt(index));
+
             space.textContent = player1.token;
+            space.classList.add(`taken`)
+
             _aiMoveManager();
+
         }))
     }
 
     const _aiMoveManager = () => {
-        do {
-            let _aiMove = player2.getBestMove(board);
-            console.log(_aiMove);
-            _spaces[parseInt(_aiMove)].textContent = player2.token;
-            board._placeToken(player2.token, parseInt(_aiMove));
-        } while (gameOn())
+        
+        let _aiMove = player2.getBestMove(board, false);
+
+        console.log(_aiMove);
+
+        _spaces[parseInt(_aiMove)].textContent = player2.token;
+        _spaces[parseInt(_aiMove)].classList.add(`taken`)
+
+        board._placeToken(player2.token, parseInt(_aiMove));
         
     };
 
