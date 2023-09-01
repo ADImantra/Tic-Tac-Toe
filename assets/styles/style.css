@@ -118,6 +118,12 @@ button:hover {
     background: #00dd00;
   }
 
+.taken:hover {
+	cursor: pointer;
+    background: red;
+	color: black;
+}
+
 .occupied:hover {
     background: #ff3a3a;
 }

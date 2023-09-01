@@ -69,7 +69,7 @@ export default class Player {
                 
                 childBoard._placeToken(`O`, index)
 
-                const nodeValue = this.getBestMove(childBoard, false, callBack, depth + 1);
+                let nodeValue = this.getBestMove(childBoard, false, callBack, depth + 1);
 
                 best = Math.max(best, nodeValue);
 

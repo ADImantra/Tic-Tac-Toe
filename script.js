@@ -21,39 +21,51 @@ const difficultyProbability = (percentage) => {
 };
 
 const gameOn = () => {
-    return board._getTerminalState();
+    return board._getTerminalState().terminal;
 }
 
 const domManager = (() => {
     const _container = document.querySelector(`.container`);
     const _playSpace = document.querySelector(`.playSpace`);
+    const _spaces = document.querySelectorAll(`.block`);
     
 
     const _resetBoard = () => {
         const _reset = document.querySelector(`.reset`);
         _reset.addEventListener(`click`, () => {
+            _spaces.forEach(space => {
+                space.textContent = ``
+            })
+
             board._clear();
         })
     };
 
     const _triggerStep = () => {
-        const _spaces = document.querySelectorAll(`.block`);
         _spaces.forEach((space, index) => space.addEventListener(`click`, () => {
-            if (!board._getTerminalState(player1.token).terminal || !board._getTerminalState(player2.token).terminal) {
-                board._placeToken(player1.token, index)
-                space.textContent = player1.token
-                board._placeToken(player2.token, parseInt(player2.getBestMove(board)))
-                space.textContent = player2.token
-            }
-            
+            board._placeToken(player1.token, parseInt(index));
+            space.textContent = player1.token;
+            _aiMoveManager();
         }))
     }
 
+    const _aiMoveManager = () => {
+        do {
+            let _aiMove = player2.getBestMove(board);
+            console.log(_aiMove);
+            _spaces[parseInt(_aiMove)].textContent = player2.token;
+            board._placeToken(player2.token, parseInt(_aiMove));
+        } while (gameOn())
+        
+    };
+
     return {
         _resetBoard,
-        _triggerStep
+        _triggerStep,
+        _aiMoveManager
     }
 })();
+
 
 init()
 domManager._resetBoard()
