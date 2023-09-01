@@ -20,9 +20,6 @@ const difficultyProbability = (percentage) => {
     return _difficultyPercent <= percentage
 };
 
-const gameOn = () => {
-    return board._getTerminalState().terminal;
-}
 
 const domManager = (() => {
     const _container = document.querySelector(`.container`);
@@ -49,7 +46,9 @@ const domManager = (() => {
             space.textContent = player1.token;
             space.classList.add(`taken`)
 
-            _aiMoveManager();
+            if (!board._getTerminalState().terminal) {
+                _aiMoveManager();
+            }
 
         }))
     }

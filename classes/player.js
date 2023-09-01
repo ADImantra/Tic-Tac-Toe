@@ -95,7 +95,7 @@ export default class Player {
                 callBack(returnValue);
                 return returnValue;
             }
-            console.log(best)
+
             return best;
         };
 
